@@ -1,5 +1,5 @@
 # paw-arbs
 
-Arbeidssøkerregisterets brukerstøtte
----
+## Arbeidssøkerregisterets brukerstøtte
+
 Dette er kun for testing og eksperimentering.

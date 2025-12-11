@@ -2,7 +2,6 @@ import { getOboToken } from "@/oboToken.ts";
 import { isProblemDetails } from "@/types.ts";
 
 /**
- * 
  * @param ident er enten identitetsnummer for en person ELLER en periode-id
  */
 const isLocalhost = Deno.env.get("ENV") === "local";
@@ -10,25 +9,30 @@ const URL_HENDELSESLOGG_BACKUP = "mock-url";
 const SCOPE_HENDELSESLOGG_BACKUP = "mock-scope";
 
 // TODO: Bytte ut 'any' med korrekt type
-export async function hentHendelselogggBackup(ident: string, headers: Request): Promise<any> {
+export async function hentHendelselogggBackup(
+  ident: string,
+  headers: Request,
+): Promise<any> {
   if (isLocalhost) {
     const { default: detaljer } = await import("../mock/detaljer.json", {
-      with: { type: 'json' },
+      with: { type: "json" },
     });
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return detaljer;
   }
 
-  const token = getOboToken(headers, SCOPE_HENDELSESLOGG_BACKUP)
-  if (!token) throw new Error("Kunne ikke hente OBO token for Hendelselslogg backup");
+  const token = getOboToken(headers, SCOPE_HENDELSESLOGG_BACKUP);
+  if (!token) {
+    throw new Error("Kunne ikke hente OBO token for Hendelselslogg backup");
+  }
 
   try {
     const response = await fetch(URL_HENDELSESLOGG_BACKUP, {
-      method: 'POST',
+      method: "POST",
       // TODO: Bytte ut 'ident' med korrekt payload
       body: JSON.stringify({ ident }),
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -36,10 +40,14 @@ export async function hentHendelselogggBackup(ident: string, headers: Request): 
     if (!response.ok) {
       const error = await response.json();
       if (isProblemDetails(error)) {
-        console.error(`Feil ved henting av hendelselslogg backup: ${error.status}:${error.title} - ${error.detail}`);
+        console.error(
+          `Feil ved henting av hendelselslogg backup: ${error.status}:${error.title} - ${error.detail}`,
+        );
         return error;
       }
-      throw new Error(`Ukjent feil ved henting av hendelselslogg backup: ${response.status}`);
+      throw new Error(
+        `Ukjent feil ved henting av hendelselslogg backup: ${response.status}`,
+      );
     }
 
     return await response.json();
