@@ -1,0 +1,218 @@
+{
+	"arbeidssoekerId": 123,
+	"recordKey": 0,
+	"kafkaPartition": 1,
+	"gjeldeneTilstand": {
+		"harAktivePeriode": true,
+		"periodeId": "b184d0cb-6cad-4d5d-96ac-b35382efca97",
+		"startet": "2024-06-27T10:38:09.986731Z",
+		"avsluttet": "2024-03-12T09:56:20.344Z",
+		"harOpplysningerMottattHendelse": true,
+		"apiKall": {
+			"harPeriode": true,
+			"harOpplysning": true,
+			"harProfilering": true
+		}
+	},
+	"historikk": [
+		{
+			"endret": true,
+			"gjeldeneTilstand": {
+				"harAktivePeriode": true,
+				"startet": "2021-01-01T12:00:00Z",
+				"avsluttet": "2021-01-02T12:00:00Z",
+				"harOpplysningerMottattHendelse": true,
+				"apiKall": {
+					"harOpplysning": true,
+					"harProfilering": true
+				}
+			},
+			"nyTilstand": {
+				"harAktivePeriode": true,
+				"startet": "2021-01-01T12:00:00Z",
+				"avsluttet": "2021-01-02T12:00:00Z",
+				"harOpplysningerMottattHendelse": true,
+				"apiKall": {
+					"harOpplysning": true,
+					"harProfilering": true
+				}
+			},
+			"hendelse": {
+				"hendelseId": "123e4567-e89b-12d3-a456-426614174000",
+				"hendelseType": "Startet",
+				"metadata": {
+					"tidspunkt": "2021-01-01T12:00:00Z",
+					"utfoertAv": {
+						"type": "SYSTEM",
+						"id": "Start stopp API: 1.0.0"
+					},
+					"kilde": "Start stopp API",
+					"aarsak": "Opplysninger mottatt fra bruker",
+					"tidspunktFraKilde": {
+						"tidspunkt": "2021-01-01T12:00:00Z",
+						"avvikstype": "Avviks type"
+					}
+				},
+				"kafkaOffset": 123234,
+				"api": true,
+				"data": {
+					"identitetsnummer": "04898999403"
+				},
+				"traceparent": "00-35d6d9c551cbea2882b6332e9383ac40-be9ac9a4698ffe03-01"
+			}
+		},
+		{
+			"endret": false,
+			"hendelse": {
+				"hendelseId": "827f9630-b55c-406f-88bd-9d898896ce9c",
+				"hendelseType": "intern.v1.startet",
+				"merged": true,
+				"metadata": {
+					"tidspunkt": "2024-05-03T06:14:04.255190400Z",
+					"utfoertAv": {
+						"type": "VEILEDER",
+						"id": "Z994498"
+					},
+					"kilde": "europe-north1-docker.pkg.dev/nais-management-233d/paw/paw-arbeidssokerregisteret-api-inngang:24.04.25.141-1",
+					"aarsak": "Er over 18 år, er bosatt i Norge i hendhold Folkeregisterloven",
+					"tidspunktFraKilde": null
+				},
+				"kafkaOffset": 65,
+				"data": {
+					"hendelseId": "827f9630-b55c-406f-88bd-9d898896ce9c",
+					"id": 995,
+					"identitetsnummer": "04898999403",
+					"metadata": {
+						"tidspunkt": "2024-05-03T06:14:04.255190400Z",
+						"utfoertAv": {
+							"type": "VEILEDER",
+							"id": "Z994498"
+						},
+						"kilde": "europe-north1-docker.pkg.dev/nais-management-233d/paw/paw-arbeidssokerregisteret-api-inngang:24.04.25.141-1",
+						"aarsak": "Er over 18 år, er bosatt i Norge i hendhold Folkeregisterloven",
+						"tidspunktFraKilde": null
+					},
+					"opplysninger": [
+						"INGEN_FLYTTE_INFORMASJON",
+						"ER_OVER_18_AAR",
+						"HAR_NORSK_ADRESSE",
+						"BOSATT_ETTER_FREG_LOVEN",
+						"TOKENX_PID_IKKE_FUNNET",
+						"ANSATT_TILGANG",
+						"INGEN_INFORMASJON_OM_OPPHOLDSTILLATELSE"
+					],
+					"hendelseType": "intern.v1.startet"
+				},
+				"api": null,
+				"traceparent": "00-35d6d9c551cbea2882b6332e9383ac40-be9ac9a4698ffe03-01"
+			},
+			"gjeldeneTilstand": {
+				"harAktivePeriode": true,
+				"periodeId": "c0505ce7-5250-46ee-9805-2ac2a0d89234",
+				"startet": "2024-04-02T13:43:50.351202500Z",
+				"harOpplysningerMottattHendelse": true,
+				"avsluttet": null,
+				"gjeldeneOpplysningsId": "9925713b-7051-4ac7-8a3e-ab8e8175484b",
+				"apiKall": null
+			},
+			"nyTilstand": {
+				"harAktivePeriode": true,
+				"periodeId": "c0505ce7-5250-46ee-9805-2ac2a0d89234",
+				"startet": "2024-04-02T13:43:50.351202500Z",
+				"harOpplysningerMottattHendelse": true,
+				"avsluttet": null,
+				"gjeldeneOpplysningsId": "9925713b-7051-4ac7-8a3e-ab8e8175484b",
+				"apiKall": null
+			}
+		},
+		{
+			"endret": true,
+			"hendelse": {
+				"hendelseId": "0a63b885-a168-4df9-964a-b7c655f9ba88",
+				"hendelseType": "intern.v1.opplysninger_om_arbeidssoeker",
+				"metadata": {
+					"tidspunkt": "2024-06-27T10:38:10.107155800Z",
+					"utfoertAv": {
+						"type": "SLUTTBRUKER",
+						"id": "21860399285"
+					},
+					"kilde": "europe-north1-docker.pkg.dev/nais-management-233d/paw/paw-arbeidssokerregisteret-api-inngang:24.06.27.48-1",
+					"aarsak": "opplysning om arbeidssøker sendt inn",
+					"tidspunktFraKilde": null
+				},
+				"kafkaOffset": 135,
+				"data": {
+					"hendelseId": "0a63b885-a168-4df9-964a-b7c655f9ba88",
+					"id": 34827,
+					"identitetsnummer": "21860399285",
+					"opplysningerOmArbeidssoeker": {
+						"id": "d28cb5f9-c95b-47e6-a4ab-a98b6e7b817f",
+						"metadata": {
+							"tidspunkt": "2024-06-27T10:38:10.107155800Z",
+							"utfoertAv": {
+								"type": "SLUTTBRUKER",
+								"id": "21860399285"
+							},
+							"kilde": "europe-north1-docker.pkg.dev/nais-management-233d/paw/paw-arbeidssokerregisteret-api-inngang:24.06.27.48-1",
+							"aarsak": "opplysning om arbeidssøker sendt inn",
+							"tidspunktFraKilde": null
+						},
+						"utdanning": {
+							"nus": "6",
+							"bestaatt": "NEI",
+							"godkjent": "JA"
+						},
+						"helse": {
+							"helsetilstandHindrerArbeid": "NEI"
+						},
+						"jobbsituasjon": {
+							"beskrivelser": [
+								{
+									"beskrivelse": "HAR_SAGT_OPP",
+									"detaljer": {
+										"stilling": "Grunnskolelærer",
+										"stilling_styrk08": "2341"
+									}
+								}
+							]
+						},
+						"annet": {
+							"andreForholdHindrerArbeid": "NEI"
+						}
+					},
+					"hendelseType": "intern.v1.opplysninger_om_arbeidssoeker",
+					"metadata": {
+						"tidspunkt": "2024-06-27T10:38:10.107155800Z",
+						"utfoertAv": {
+							"type": "SLUTTBRUKER",
+							"id": "21860399285"
+						},
+						"kilde": "europe-north1-docker.pkg.dev/nais-management-233d/paw/paw-arbeidssokerregisteret-api-inngang:24.06.27.48-1",
+						"aarsak": "opplysning om arbeidssøker sendt inn",
+						"tidspunktFraKilde": null
+					}
+				},
+				"api": null,
+				"traceparent": "00-35d6d9c551cbea2882b6332e9383ac40-be9ac9a4698ffe03-01"
+			},
+			"gjeldeneTilstand": {
+				"harAktivePeriode": true,
+				"periodeId": "7525af3c-beb7-4a4f-ad16-f059187954b2",
+				"startet": "2024-06-27T10:38:09.986731Z",
+				"harOpplysningerMottattHendelse": false,
+				"avsluttet": null,
+				"gjeldeneOpplysningsId": null,
+				"apiKall": null
+			},
+			"nyTilstand": {
+				"harAktivePeriode": true,
+				"periodeId": "7525af3c-beb7-4a4f-ad16-f059187954b2",
+				"startet": "2024-06-27T10:38:09.986731Z",
+				"harOpplysningerMottattHendelse": true,
+				"avsluttet": null,
+				"gjeldeneOpplysningsId": "d28cb5f9-c95b-47e6-a4ab-a98b6e7b817f",
+				"apiKall": null
+			}
+		}
+	]
+}

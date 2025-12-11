@@ -1,0 +1,140 @@
+/* Base reset */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+/* Make sure footer is at bottom */
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+main {
+	flex: 1;
+	padding: 1rem;
+}
+
+/* Header styling */
+header {
+	background: linear-gradient(135deg, #262626 0%, #3e3832 100%);
+	color: #fff;
+	padding: 1.5rem 2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+}
+
+header p {
+	font-size: 0.95rem;
+	color: rgba(255, 255, 255, 0.85);
+	background: rgba(255, 255, 255, 0.1);
+	padding: 0.5rem 1rem;
+	border-radius: 2rem;
+}
+
+/* Search form */
+.search-form {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.search-form input[type="search"] {
+	padding: 0.5rem 1rem;
+	font-size: 0.95rem;
+	font-family: inherit;
+	border: none;
+	border-radius: 0.375rem;
+	background: rgba(255, 255, 255, 0.95);
+	color: #262626;
+	min-width: 200px;
+}
+
+.search-form input[type="search"]::placeholder {
+	color: #6b6b6b;
+}
+
+.search-form input[type="search"]:focus {
+	outline: 2px solid #66a3ff;
+	outline-offset: 1px;
+}
+
+.search-form button {
+	padding: 0.5rem 1rem;
+	font-size: 0.95rem;
+	font-family: inherit;
+	font-weight: 500;
+	border: none;
+	border-radius: 0.375rem;
+	background: #0067c5;
+	color: #fff;
+	cursor: pointer;
+	transition: background 0.15s ease;
+}
+
+.search-form button:hover {
+	background: #005aa4;
+}
+
+.search-form button:focus {
+	outline: 2px solid #66a3ff;
+	outline-offset: 1px;
+}
+
+/* Spinner */
+.search-form .spinner {
+	display: none;
+	width: 1rem;
+	height: 1rem;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	border-top-color: #fff;
+	border-radius: 50%;
+	animation: spin 0.8s linear infinite;
+}
+
+.search-form.loading .button-text {
+	display: none;
+}
+
+.search-form.loading .spinner {
+	display: inline-block;
+}
+
+.search-form.loading button {
+	pointer-events: none;
+	opacity: 0.7;
+}
+
+.search-form.loading input {
+	pointer-events: none;
+	opacity: 0.7;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Responsive header */
+@media (max-width: 600px) {
+	header {
+		flex-direction: column;
+		gap: 1rem;
+		text-align: center;
+		padding: 1.25rem 1rem;
+	}
+
+	header h1 {
+		font-size: 1.25rem;
+	}
+}
