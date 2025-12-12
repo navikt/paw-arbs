@@ -138,3 +138,167 @@ header p {
     font-size: 1.25rem;
   }
 }
+
+/* =============================================================================
+   ArbeidsoekerCard Component
+   Using CSS @scope for clean, isolated styling with Aksel design tokens
+   ============================================================================= */
+
+@scope (.arbeidssoeker-card) {
+  /* Card container */
+  :scope {
+    background: var(--a-surface-default);
+    border: 1px solid var(--a-border-default);
+    border-radius: var(--a-border-radius-medium);
+    box-shadow: var(--a-shadow-small);
+    max-width: 600px;
+    overflow: hidden;
+  }
+
+  /* Header section */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--a-spacing-4);
+    background: var(--a-surface-subtle);
+    border-bottom: 1px solid var(--a-border-default);
+  }
+
+  .status {
+    font-size: var(--a-font-size-small);
+    font-weight: var(--a-font-weight-bold);
+    padding: var(--a-spacing-1) var(--a-spacing-3);
+    border-radius: var(--a-border-radius-full);
+
+    &.active {
+      background: var(--a-surface-success-subtle);
+      color: var(--a-text-success);
+    }
+
+    &.inactive {
+      background: var(--a-surface-neutral-subtle);
+      color: var(--a-text-subtle);
+    }
+  }
+
+  .id {
+    font-size: var(--a-font-size-small);
+    color: var(--a-text-subtle);
+    font-family: monospace;
+  }
+
+  /* Content section */
+  .content {
+    padding: var(--a-spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--a-spacing-4);
+  }
+
+  /* Details list */
+  .details {
+    display: grid;
+    gap: var(--a-spacing-2);
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--a-spacing-2) 0;
+    border-bottom: 1px solid var(--a-border-subtle);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    dt {
+      color: var(--a-text-subtle);
+      font-size: var(--a-font-size-small);
+    }
+
+    dd {
+      font-weight: var(--a-font-weight-bold);
+      font-size: var(--a-font-size-small);
+    }
+  }
+
+  /* API status section */
+  .api-status {
+    h4 {
+      font-size: var(--a-font-size-small);
+      color: var(--a-text-subtle);
+      margin-bottom: var(--a-spacing-2);
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--a-spacing-3);
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: var(--a-spacing-1);
+      font-size: var(--a-font-size-small);
+    }
+  }
+
+  /* Status indicator dots */
+  .indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+
+    &.ok {
+      background: var(--a-surface-success);
+    }
+
+    &.missing {
+      background: var(--a-surface-danger);
+    }
+  }
+
+  /* Historikk section */
+  .historikk {
+    padding: var(--a-spacing-4);
+    background: var(--a-surface-subtle);
+    border-top: 1px solid var(--a-border-default);
+
+    h4 {
+      font-size: var(--a-font-size-small);
+      color: var(--a-text-subtle);
+      margin-bottom: var(--a-spacing-2);
+    }
+  }
+
+  .historikk-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--a-spacing-2);
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--a-font-size-small);
+      padding: var(--a-spacing-1) 0;
+    }
+
+    .type {
+      font-weight: var(--a-font-weight-bold);
+      color: var(--a-text-default);
+    }
+
+    .time {
+      color: var(--a-text-subtle);
+    }
+
+    .more {
+      color: var(--a-text-subtle);
+      font-style: italic;
+    }
+  }
+}

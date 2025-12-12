@@ -1,3 +1,5 @@
+import type { UtfoertAv } from "@navikt/arbeidssokerregisteret-utils";
+
 /**
  * RFC 7807 Problem Details for HTTP APIs
  * @see https://datatracker.ietf.org/doc/html/rfc7807
@@ -31,3 +33,46 @@ export function isProblemDetails(value: unknown): value is ProblemDetails {
     "title" in value
   );
 }
+
+export type GjeldeneTilstand = {
+  harAktivePeriode: boolean;
+  periodeId?: string;
+  startet: string;
+  avsluttet: string | null;
+  harOpplysningerMottattHendelse: boolean;
+  apiKall: {
+    harPeriode?: boolean;
+    harOpplysning: boolean;
+    harProfilering: boolean;
+  };
+};
+
+type HistorikkHendelse = {
+  hendelseId: string;
+  hendelseType: string;
+  merged?: boolean;
+  metadata: {
+    tidspunkt: string;
+    utfoertAv: UtfoertAv;
+    aarsak: string;
+  };
+  data: {
+    identitetsnummer: string;
+  };
+  traceparent: string;
+};
+
+export type Historikk = {
+  endret: boolean;
+  gjeldeneTilstand: GjeldeneTilstand;
+  nyTilstand: GjeldeneTilstand;
+  hendelse: HistorikkHendelse;
+};
+
+export type ArbeidsoekerDetaljer = {
+  arbeidssoekerId: number;
+  recordKey: number;
+  kafkaPartition: number;
+  gjeldeneTilstand: GjeldeneTilstand;
+  historikk: Historikk[];
+};

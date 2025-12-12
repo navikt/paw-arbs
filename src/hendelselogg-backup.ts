@@ -1,5 +1,5 @@
 import { getOboToken } from "@/oboToken.ts";
-import { isProblemDetails } from "@/types.ts";
+import { ArbeidsoekerDetaljer, isProblemDetails } from "@/types.ts";
 
 /**
  * @param ident er enten identitetsnummer for en person ELLER en periode-id
@@ -8,17 +8,16 @@ const isLocalhost = Deno.env.get("ENV") === "local";
 const URL_HENDELSESLOGG_BACKUP = "mock-url";
 const SCOPE_HENDELSESLOGG_BACKUP = "mock-scope";
 
-// TODO: Bytte ut 'any' med korrekt type
 export async function hentHendelselogggBackup(
   ident: string,
   headers: Request,
-): Promise<any> {
+): Promise<ArbeidsoekerDetaljer> {
   if (isLocalhost) {
     const { default: detaljer } = await import("../mock/detaljer.json", {
       with: { type: "json" },
     });
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    return detaljer;
+    return detaljer as ArbeidsoekerDetaljer;
   }
 
   const token = getOboToken(headers, SCOPE_HENDELSESLOGG_BACKUP);
@@ -43,11 +42,11 @@ export async function hentHendelselogggBackup(
         console.error(
           `Feil ved henting av hendelselslogg backup: ${error.status}:${error.title} - ${error.detail}`,
         );
-        return error;
+      } else {
+        console.error(
+          `Ukjent feil ved henting av hendelselslogg backup: ${response.status}`,
+        );
       }
-      throw new Error(
-        `Ukjent feil ved henting av hendelselslogg backup: ${response.status}`,
-      );
     }
 
     return await response.json();

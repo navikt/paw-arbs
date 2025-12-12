@@ -18,21 +18,14 @@ const BaseLayout: FC<{
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>"
         />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin="anonymous"
-        />
-
-        <link
-          href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
           rel="stylesheet"
+          href="https://cdn.nav.no/aksel/@navikt/ds-css/7.35.2/index.min.css"
         />
         <link rel="stylesheet" href="/static/stylesheet.css" />
         <script src="/static/app.js" defer></script>
       </head>
-      <body style={{ fontFamily: "'Source Sans 3', sans-serif" }}>
+      <body>
         {children}
       </body>
     </html>

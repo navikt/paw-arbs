@@ -26,7 +26,7 @@ app.post("/search", async (c) => {
     <SearchPage
       title={`ARBS | Søk: ${query}`}
       searchQuery={query}
-      rawData={personDetaljer}
+      detaljer={personDetaljer}
     />,
   );
 });

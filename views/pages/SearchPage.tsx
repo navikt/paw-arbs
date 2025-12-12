@@ -1,10 +1,12 @@
 import type { FC } from "hono/jsx";
 import BaseLayout from "../layouts/BaseLayout.tsx";
 import Header from "../layouts/Header.tsx";
+import { ArbeidsoekerCard } from "../components/ArbeidsoekerCard.tsx";
+import type { ArbeidsoekerDetaljer } from "@/types.ts";
 
 const SearchPage: FC<
-  { title: string; searchQuery?: string; rawData?: string }
-> = ({ title, searchQuery, rawData }) => {
+  { title: string; searchQuery?: string; detaljer?: ArbeidsoekerDetaljer }
+> = ({ title, searchQuery, detaljer }) => {
   return (
     <BaseLayout title={title}>
       <Header />
@@ -14,10 +16,9 @@ const SearchPage: FC<
           : <h2>Ingen søkeparametere er oppgitt</h2>}
 
         <div>
-          <h3>
-            data som ble hentet:
-          </h3>
-          <pre>{JSON.stringify(rawData, null, 2)}</pre>
+          {detaljer
+            ? <ArbeidsoekerCard detaljer={detaljer} />
+            : <p>Ingen data funnet</p>}
         </div>
       </main>
     </BaseLayout>
