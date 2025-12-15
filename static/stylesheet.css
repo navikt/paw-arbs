@@ -302,3 +302,30 @@ header p {
     }
   }
 }
+
+/* =============================================================================
+   Error Page Styling
+   ============================================================================= */
+@scope (.error-page) {
+  :scope {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--a-surface-default);
+    border: 1px solid var(--a-border-default);
+    border-radius: var(--a-border-radius-medium);
+    box-shadow: var(--a-shadow-small);
+    text-align: center;
+  }
+
+  h2 {
+    font-size: var(--a-font-size-large);
+    color: var(--a-text-danger);
+    margin-bottom: var(--a-spacing-4);
+  }
+
+  p {
+    font-size: var(--a-font-size-medium);
+    color: var(--a-text-default);
+  }
+} 
