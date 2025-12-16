@@ -1,0 +1,56 @@
+name: Build, push, and deploy
+
+on:
+  push:
+    branches:
+      - main
+      - dev/**
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: "read"
+      packages: "write"
+      id-token: "write"
+
+    steps:
+      - uses: actions/checkout@v5
+        name: Checkout
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: "2.6.0"
+
+      - name: Deno lint
+        run: deno lint --unstable-tsgo .
+
+      - name: docker-build-push
+        uses: nais/docker-build-push@v0
+        id: docker-build-push
+        with:
+          team: paw
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+    outputs:
+      image: ${{ steps.docker-build-push.outputs.image }}
+
+  deploy-dev:
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/dev')
+    name: Deploy til dev
+    permissions:
+      contents: "read"
+      id-token: "write"
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Deploy
+        uses: nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: .nais/dev.yaml
+          VAR: image=${{ needs.build.outputs.image }}

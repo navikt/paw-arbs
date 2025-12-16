@@ -1,0 +1,33 @@
+kind: Application
+apiVersion: nais.io/v1alpha1
+metadata:
+  name: paw-arbs
+  namespace: paw
+  labels:
+    team: paw
+spec:
+  image: { { image } }
+  port: 8000
+  ingresses:
+    - https://paw-arbs.ansatt.dev.nav.no
+  liveness:
+    path: /isalive
+    initialDelay: 3
+  readiness:
+    path: /isready
+    initialDelay: 3
+  azure:
+    application:
+      enabled: true
+    sidecar:
+      enabled: true
+  replicas:
+    min: 1
+    max: 1
+  accessPolicy:
+    outbound:
+      rules:
+        - application: paw-arbeidssoekerregisteret-hendelselogg-backup
+  env:
+    - name: HENDELSELOGG_BACKUP_URL
+      value: http://paw-arbeidssoekerregisteret-hendelselogg-backup/api/v1/arbeidssoeker/detaljer
