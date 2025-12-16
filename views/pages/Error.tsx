@@ -12,5 +12,5 @@ const Error: FC<{ message: string }> = ({ message }) => {
       </div>
     </BaseLayout>
   );
-}
+};
 export { Error };
