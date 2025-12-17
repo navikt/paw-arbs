@@ -1,4 +1,4 @@
-# paw-arbs
+# paw-brukerstotte-test
 
 ## Arbeidssøkerregisterets brukerstøtte
 
