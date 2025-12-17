@@ -15,7 +15,7 @@ app.get("/isready", (c) => c.json("ready"));
 
 app.get("/", (c) => {
   return c.html(
-    <SearchPage title="ARBS" />,
+    <SearchPage title="Brukerstøtte" />,
   );
 });
 
@@ -31,7 +31,7 @@ app.post("/search", async (c) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return c.html(
     <SearchPage
-      title={`ARBS | Søk: ${query}`}
+      title={`Brukerstøtte | Søk: ${query}`}
       searchQuery={query}
       detaljer={personDetaljer}
     />,

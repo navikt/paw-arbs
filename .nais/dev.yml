@@ -1,7 +1,7 @@
 kind: Application
 apiVersion: nais.io/v1alpha1
 metadata:
-  name: paw-arbs
+  name: paw-brukerstotte-test
   namespace: paw
   labels:
     team: paw
@@ -9,7 +9,7 @@ spec:
   image: {{ image }}
   port: 8000
   ingresses:
-    - https://paw-arbs.ansatt.dev.nav.no
+    - https://paw-brukerstotte-test.ansatt.dev.nav.no
   liveness:
     path: /isalive
     initialDelay: 3
