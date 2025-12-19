@@ -28,14 +28,6 @@ spec:
     outbound:
       rules:
         - application: paw-arbeidssoekerregisteret-hendelselogg-backup
-  observability:
-    autoInstrumentation:
-      enabled: true
-      runtime: sdk
   env:
-    - name: OTEL_DENO
-      value: "true"
-    - name: OTEL_SERVICE_NAME
-      value: "paw-brukerstotte-test"
     - name: HENDELSELOGG_BACKUP_URL
       value: http://paw-arbeidssoekerregisteret-hendelselogg-backup/api/v1/arbeidssoeker/detaljer
