@@ -33,6 +33,10 @@ export async function hentHendelselogggBackup(
     throw new Error("HENDELSELOGG_BACKUP_URL er ikke satt");
   }
 
+  // Legg til timeout på 25 sekunder for å unngå at nginx gir 504 før vi får håndtert feilen selv
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 15000);
+
   try {
     const response = await fetch(HENDELSELOGG_BACKUP_URL, {
       method: "POST",
@@ -41,23 +45,45 @@ export async function hentHendelselogggBackup(
         "content-type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      signal: controller.signal,
     });
 
+    clearTimeout(timeoutId);
+
     if (!response.ok) {
+      // Sjekk for gateway timeout (504)
+      if (response.status === 504) {
+        throw new Error(
+          "Tjenesten brukte for lang tid på å svare (504 Gateway Timeout). Prøv igjen senere.",
+        );
+      }
+
       const error = await response.json();
       if (isProblemDetails(error)) {
         console.error(
           `Feil ved henting av hendelselslogg backup: ${error.status}:${error.title} - ${error.detail}`,
         );
+        throw new Error(`${error.title}: ${error.detail}`);
       } else {
         console.error(
           `Ukjent feil ved henting av hendelselslogg backup: ${response.status}`,
         );
+        throw new Error(`Ukjent feil fra tjenesten (${response.status})`);
       }
     }
 
     return await response.json();
   } catch (e) {
+    clearTimeout(timeoutId);
+
+    // Håndter abort/timeout fra vår egen AbortController
+    if (e instanceof DOMException && e.name === "AbortError") {
+      console.error(`Timeout mot ${HENDELSELOGG_BACKUP_URL}`);
+      throw new Error(
+        "Forespørselen tok for lang tid. Tjenesten svarte ikke innen tidsfristen.",
+      );
+    }
+
     console.error(e, `Nettverksfeil mot ${HENDELSELOGG_BACKUP_URL}`);
     throw e;
   }

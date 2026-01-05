@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { timeout } from "hono/timeout";
 import { serveStatic } from "hono/deno";
 import { hentHendelselogggBackup } from "@/hendelselogg-backup.ts";
 import { SearchPage } from "@/views/pages/SearchPage.tsx";
@@ -8,6 +9,7 @@ const app = new Hono();
 console.log("Server konfigurert og starter...");
 
 app.use("/static/*", serveStatic({ root: "./" }));
+app.use("/search", timeout(30000));
 
 // Health check
 app.get("/isalive", (c) => c.json("alive"));
