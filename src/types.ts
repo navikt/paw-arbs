@@ -38,8 +38,9 @@ export type GjeldeneTilstand = {
   harAktivePeriode: boolean;
   periodeId?: string;
   startet: string;
-  avsluttet: string | null;
+  avsluttet?: string;
   harOpplysningerMottattHendelse: boolean;
+  gjeldeneOpplysningsId?: string;
   apiKall: {
     harPeriode?: boolean;
     harOpplysning: boolean;
