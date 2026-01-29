@@ -4,7 +4,6 @@ import { ArbeidsoekerDetaljer, isProblemDetails } from "@/types.ts";
 const isLocalhost = Deno.env.get("ENV") === "local";
 const HENDELSELOGG_BACKUP_URL = Deno.env.get("HENDELSELOGG_BACKUP_URL");
 const NAIS_CLUSTER_NAME = Deno.env.get("NAIS_CLUSTER_NAME");
-// const NAIS_CLUSTER_NAME = "dev-gcp";
 
 /**
  * @param ident er enten identitetsnummer for en person ELLER en periode-id
@@ -15,7 +14,7 @@ export async function hentHendelselogggBackup(
 ): Promise<ArbeidsoekerDetaljer> {
   console.log(`hentHendelselogggBackup for ident er i gang`);
   if (isLocalhost) {
-    const { default: detaljer } = await import("../mock/detaljer.json", {
+    const { default: detaljer } = await import("@/mock/detaljer.json", {
       with: { type: "json" },
     });
     await new Promise((resolve) => setTimeout(resolve, 1000));
