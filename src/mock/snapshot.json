@@ -1,0 +1,111 @@
+{
+  "id": "a510b62b-af9a-4440-81f9-0af986461cc7",
+  "identitetsnummer": "24849098329",
+  "startet": {
+    "tidspunkt": "2025-10-24T13:10:35.048Z",
+    "utfoertAv": {
+      "type": "SLUTTBRUKER",
+      "id": "24849098329",
+      "sikkerhetsnivaa": "tokenx:Level4"
+    },
+    "kilde": "europe-north1-docker.pkg.dev/nais-management-233d/paw/paw-arbeidssokerregisteret-api-inngang:25.10.14.382-1",
+    "aarsak": "Er over 18 år, er bosatt i Norge i henhold Folkeregisterloven",
+    "type": "PERIODE_STARTET_V1"
+  },
+  "opplysning": {
+    "id": "e98014ee-b7e7-4d74-8ff9-d8fa959e6a04",
+    "sendtInnAv": {
+      "tidspunkt": "2025-10-27T13:17:14.037Z",
+      "utfoertAv": {
+        "type": "SLUTTBRUKER",
+        "id": "24849098329",
+        "sikkerhetsnivaa": "tokenx:Level4"
+      },
+      "kilde": "europe-north1-docker.pkg.dev/nais-management-233d/paw/paw-arbeidssokerregisteret-api-inngang:25.10.14.382-1",
+      "aarsak": "opplysning om arbeidssøker sendt inn"
+    },
+    "utdanning": {
+      "nus": "6",
+      "bestaatt": "JA",
+      "godkjent": "JA"
+    },
+    "helse": {
+      "helsetilstandHindrerArbeid": "NEI"
+    },
+    "jobbsituasjon": {
+      "beskrivelser": [
+        {
+          "beskrivelse": "HAR_BLITT_SAGT_OPP",
+          "detaljer": {
+            "stilling": "Chassispåbygger",
+            "stilling_styrk08": "8211"
+          }
+        }
+      ]
+    },
+    "annet": {
+      "andreForholdHindrerArbeid": "NEI"
+    },
+    "type": "OPPLYSNINGER_V4"
+  },
+  "profilering": {
+    "id": "b10b1f27-323a-4364-beaf-84476d33419b",
+    "opplysningerOmArbeidssokerId": "e98014ee-b7e7-4d74-8ff9-d8fa959e6a04",
+    "sendtInnAv": {
+      "tidspunkt": "2025-10-27T13:17:14.487Z",
+      "utfoertAv": {
+        "type": "SYSTEM",
+        "id": "europe-north1-docker.pkg.dev/nais-management-233d/paw/paw-arbeidssokerregisteret-profilering:25.10.27.238-1"
+      },
+      "kilde": "europe-north1-docker.pkg.dev/nais-management-233d/paw/paw-arbeidssokerregisteret-profilering:25.10.27.238-1",
+      "aarsak": "opplysninger-mottatt",
+      "tidspunktFraKilde": {
+        "tidspunkt": "2025-10-27T13:17:14.037Z",
+        "avviksType": "FORSINKELSE"
+      }
+    },
+    "profilertTil": "ANTATT_GODE_MULIGHETER",
+    "jobbetSammenhengendeSeksAvTolvSisteMnd": true,
+    "alder": 35,
+    "type": "PROFILERING_V1"
+  },
+  "egenvurdering": {
+    "id": "be500aee-a65b-49d6-9612-2374a7b872ca",
+    "profileringId": "b10b1f27-323a-4364-beaf-84476d33419b",
+    "sendtInnAv": {
+      "tidspunkt": "2025-10-28T09:23:31.505Z",
+      "utfoertAv": {
+        "type": "SLUTTBRUKER",
+        "id": "24849098329",
+        "sikkerhetsnivaa": "tokenx:Level4"
+      },
+      "kilde": "paw-arbeidssoekerregisteret-api-egenvurdering",
+      "aarsak": "Bruker har gjort en egenvurdering av profileringsresultatet"
+    },
+    "profilertTil": "ANTATT_GODE_MULIGHETER",
+    "egenvurdering": "ANTATT_GODE_MULIGHETER",
+    "type": "EGENVURDERING_V1"
+  },
+  "bekreftelse": {
+    "id": "a5461e55-faa9-42b0-be8d-b58c83009915",
+    "bekreftelsesloesning": "ARBEIDSSOEKERREGISTERET",
+    "status": "GYLDIG",
+    "svar": {
+      "sendtInnAv": {
+        "tidspunkt": "2025-11-17T11:28:40.131Z",
+        "utfoertAv": {
+          "type": "SLUTTBRUKER",
+          "id": "24849098329",
+          "sikkerhetsnivaa": "tokenx:Level4"
+        },
+        "kilde": "europe-north1-docker.pkg.dev/nais-management-233d/paw/paw-arbeidssoekerregisteret-api-bekreftelse:25.11.17.399-1",
+        "aarsak": "Bekreftelse levert"
+      },
+      "gjelderFra": "2025-11-02T23:00:00Z",
+      "gjelderTil": "2025-11-16T23:00:00Z",
+      "harJobbetIDennePerioden": false,
+      "vilFortsetteSomArbeidssoeker": true
+    },
+    "type": "BEKREFTELSE_V1"
+  }
+}
