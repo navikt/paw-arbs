@@ -45,18 +45,26 @@ export async function hentSnapshot(
       },
     });
     if (!response.ok) {
-      const error = await response.json();
-      if (isProblemDetails(error)) {
-        console.error(
-          `Feil ved henting av hendelselslogg backup: ${error.status}:${error.title} - ${error.detail}`,
-        );
-        throw new Error(`${error.title}: ${error.detail}`);
-      } else {
-        console.error(
-          `Ukjent feil ved henting av hendelselslogg backup: ${response.status}`,
-        );
-        throw new Error(`Ukjent feil fra tjenesten (${response.status})`);
+      const text = await response.text();
+      if (text) {
+        try {
+          const error = JSON.parse(text);
+          if (isProblemDetails(error)) {
+            console.error(
+              `Feil ved henting av hendelselslogg backup: ${error.status}:${error.title} - ${error.detail}`,
+            );
+            throw new Error(`${error.title}: ${error.detail}`);
+          }
+        } catch (_parseError) {
+          console.error(
+            `Kunne ikke parse feilrespons: ${text}`,
+          );
+        }
       }
+      console.error(
+        `Ukjent feil ved henting av hendelselslogg backup: ${response.status}`,
+      );
+      throw new Error(`Ukjent feil fra tjenesten (${response.status})`);
     }
     return response.json();
   } catch (e) {
