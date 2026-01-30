@@ -1,6 +1,6 @@
 import { Snapshot } from "@navikt/arbeidssokerregisteret-utils/oppslag/v3";
-import { getOboToken } from "./oboToken.ts";
 import { isProblemDetails } from "./types.ts";
+import { getAzureM2MToken } from "./m2mToken.ts";
 
 const isLocalhost = Deno.env.get("ENV") === "local";
 const NAIS_CLUSTER_NAME = Deno.env.get("NAIS_CLUSTER_NAME");
@@ -8,7 +8,6 @@ const OPPSLAG_V2_URL = Deno.env.get("OPPSLAG_API_V2_URL");
 
 export async function hentSnapshot(
   ident: string,
-  headers: Request,
 ): Promise<Snapshot | null> {
   if (!ident) return null;
   if (isLocalhost) {
@@ -27,9 +26,9 @@ export async function hentSnapshot(
   const scope =
     `api://${NAIS_CLUSTER_NAME}.paw.paw-arbeidssoekerregisteret-api-oppslag-v2/.default`;
 
-  const token = await getOboToken(headers, scope);
+  const token = await getAzureM2MToken(scope);
   if (!token) {
-    throw new Error("Kunne ikke hente OBO token for Hendelselslogg backup");
+    throw new Error("Kunne ikke hente Azure M2M token for oppslag-api");
   }
 
   try {
