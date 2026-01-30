@@ -2,14 +2,21 @@ import { FC } from "hono/jsx";
 
 type CopyButtonProps = {
   copyString: string;
+  ariaText: string;
   title?: string;
 };
 
 const CopyButton: FC<CopyButtonProps> = (props) => {
-  const { copyString, title } = props;
+  const { copyString, ariaText, title } = props;
 
   return (
-    <button type="button" class="copy-button" data-text-copy={copyString}>
+    <button
+      type="button"
+      class="copy-button"
+      data-text-copy={copyString}
+      aria-label={ariaText}
+      title={ariaText}
+    >
       <svg
         width="24"
         height="24"
